@@ -1,0 +1,89 @@
+[gd_scene load_steps=17 format=3 uid="uid://1yr7xbpuw25s"]
+
+[ext_resource type="Texture2D" uid="uid://cwe684umywa7e" path="res://assets/sokoban/Tilesheet/sokoban_tilesheet.png" id="1_3hcsu"]
+[ext_resource type="Script" path="res://base_player.gd" id="1_wokg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dew3"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uojgm"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ths1"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixbs7"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nymdg"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ubq3"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(320, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0bwx"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0hrc"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qgbg"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mj5a"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcht8"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt3ec"]
+atlas = ExtResource("1_3hcsu")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8rfo"]
+animations = [{
+"frames": [SubResource("AtlasTexture_4dew3"), SubResource("AtlasTexture_uojgm"), SubResource("AtlasTexture_3ths1")],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_ixbs7"), SubResource("AtlasTexture_nymdg"), SubResource("AtlasTexture_8ubq3")],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_k0bwx"), SubResource("AtlasTexture_a0hrc"), SubResource("AtlasTexture_3qgbg")],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_8mj5a"), SubResource("AtlasTexture_bcht8"), SubResource("AtlasTexture_rt3ec")],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jrpa"]
+size = Vector2(20, 24)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_wokg7")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+frames = SubResource("SpriteFrames_f8rfo")
+animation = &"right"
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8jrpa")
