@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8lig3t4wkhi0"]
+
+[ext_resource type="Script" path="res://Shooting/BalloonManager.gd" id="1_4tcuc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fg41p"]
+sky_top_color = Color(0.196078, 0.462745, 0.709804, 1)
+sky_horizon_color = Color(0.576471, 0.654902, 0.670588, 1)
+sky_curve = 0.126134
+ground_bottom_color = Color(0.309804, 0.4, 0.32549, 1)
+ground_horizon_color = Color(0.596078, 0.654902, 0.670588, 1)
+ground_curve = 0.234254
+sun_curve = 0.0588438
+
+[sub_resource type="Sky" id="Sky_wf4w3"]
+sky_material = SubResource("ProceduralSkyMaterial_fg41p")
+process_mode = 2
+
+[sub_resource type="Environment" id="Environment_nm0ma"]
+background_mode = 2
+background_energy_multiplier = 2.36
+sky = SubResource("Sky_wf4w3")
+sky_custom_fov = 110.5
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_4tcuc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.416)
+environment = SubResource("Environment_nm0ma")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.894911, -0.327201, 0.303437, 0, 0.679979, 0.733232, -0.446245, -0.656177, 0.608521, 0, 3.03581, 0)
+
+[node name="Score" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 42.0
+offset_right = 80.0
+offset_bottom = 68.0
+text = "Score: 0"
+
+[node name="Level" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 46.0
+text = "Level: 0"
+
+[node name="Goal" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 20.0
+offset_right = 176.0
+offset_bottom = 46.0
+text = "Next Level on: 0"

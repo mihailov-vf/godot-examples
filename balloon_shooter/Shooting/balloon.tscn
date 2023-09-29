@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0r6chx6v214u"]
+
+[ext_resource type="Script" path="res://Shooting/Balloon.gd" id="1_5c6ig"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm1pn"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0.215686, 1, 1)
+roughness = 0.44
+
+[sub_resource type="SphereMesh" id="SphereMesh_gf6tn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gm1pn")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oyx1t"]
+
+[node name="Balloon" type="Area3D"]
+script = ExtResource("1_5c6ig")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_gf6tn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oyx1t")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
